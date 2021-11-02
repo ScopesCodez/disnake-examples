@@ -12,9 +12,9 @@ async def ban(ctx, member: disnake.Member, *, reason=None):
     # We'll try to send a message to the member that was banned to inform them.
     try:
         await member.send(f"You have been banned from **{ctx.guild}**!\nReason: {reason}")
-    except:
+    except disnake.Forbidden: 
         # If the bot couldn't send a message to the user, we'll just ignore it.
-        pass
+        print(f"Dms are disabled of {member} : {member.id}")
 
     await member.ban(reason=reason)
 
@@ -27,9 +27,9 @@ async def kick(ctx, member: disnake.Member, *, reason=None):
     # We'll try to send a message to the member that was kicked to inform them.
     try:
         await member.send(f"You have been kicked from **{ctx.guild}**!\nReason: {reason}")
-    except:
+    except disnake.Forbidden: 
         # If the bot couldn't send a message to the user, we'll just ignore it.
-        pass
+        print(f"Dms are disabled of {member} : {member.id}")
 
     await member.kick(reason=reason)
 
@@ -41,6 +41,3 @@ async def clear(ctx, amount=5):
     
     deleted = await ctx.channel.purge(limit=amount)
     await ctx.send(f"**{deleted}** messages have been deleted!", delete_after=3)
-
-
-# ...    

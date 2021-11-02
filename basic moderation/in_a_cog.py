@@ -2,6 +2,7 @@ import disnake
 from disnake.ext import commands
 
 class Moderation(commands.Cog):
+    """Moderation cog that has simple few moderation commands as example."""
     def __init__(self, bot):
         self.bot = bot
 
@@ -12,9 +13,9 @@ class Moderation(commands.Cog):
         # We'll try to send a message to the member that was banned to inform them.
         try:
             await member.send(f"You have been banned from **{ctx.guild}**!\nReason: {reason}")
-        except:
+        except disnake.Forbidden:
             # If the bot couldn't send a message to the user, we'll just ignore it.
-            pass
+            print(f"Dms are disabled of {member} : {member.id}")
 
         await member.ban(reason=reason)
 
@@ -27,9 +28,9 @@ class Moderation(commands.Cog):
         # We'll try to send a message to the member that was kicked to inform them.
         try:
             await member.send(f"You have been kicked from **{ctx.guild}**!\nReason: {reason}")
-        except:
+        except disnake.Forbidden: 
             # If the bot couldn't send a message to the user, we'll just ignore it.
-            pass
+            print(f"Dms are disabled of {member} : {member.id}")
 
         await member.kick(reason=reason)
 
