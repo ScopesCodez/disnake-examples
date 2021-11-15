@@ -1,6 +1,6 @@
 # Creating your first ever Discord bot in Python? This is how you do it!
 
-# First, you'd need to import the required libraries. We will use 'disnake', which you can install by executing `pip install disnake.py` in your command prompt/terminal.
+# First, you'd need to import the required libraries. We will use 'disnake', which you can install by executing `pip install disnake` in your command prompt/terminal.
 
 import disnake
 from disnake.ext import commands
